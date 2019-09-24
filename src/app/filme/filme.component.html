@@ -1,1 +1,17 @@
-<p>filme works!</p>
+<div class="row">
+  <div class="col-md-12">
+    <blockquote class="blockquote">
+      <h1 class="mb-0">{{filmeObject?.title}} ({{filmeObject?.release_date | date: 'yyyy'}})</h1>
+      <footer class="blockquote-footer">Direção: {{filmeObject?.director}}, Produção: {{filmeObject?.producer}}</footer>
+    </blockquote>
+
+    <h4>Texto de abertura:</h4>
+    <p>{{filmeObject?.opening_crawl}}</p>
+
+    <h5>Personagens:</h5>
+    <ul>
+      <li *ngFor="let personagemId of filmeObject?.characters">{{getPersonagemById(personagemId)?.name}}</li>
+    </ul>
+
+  </div>
+</div>

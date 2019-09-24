@@ -13,6 +13,7 @@ export class PersonagensComponent implements OnInit, OnDestroy {
 
   listPersonagens: Array<Personagem>;
   listFilmes: Array<Filme>;
+  searchString = {name: ''};
 
   personagensSubscription: Subscription;
   filmesSubscription: Subscription;
@@ -26,7 +27,19 @@ export class PersonagensComponent implements OnInit, OnDestroy {
 
   getPersonagensListFromService(){
     this.personagensSubscription = this.service.getPersonagensFromJsonArchive().subscribe((res: any) => {
-       this.listPersonagens = res.results;
+       this.listPersonagens = res.results.sort((a, b) => {
+         if(b.films.length  < a.films.length){
+           return -1;
+         }
+
+         if(b.films.length > a.films.length){
+            return 1;
+         }
+
+         if(b.films.length == a.films.length){
+           return a.name > b.name ? 1 : -1;
+         }
+       });
     });
   }
 

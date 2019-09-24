@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { PersonagensComponent } from './personagens/personagens.component';
 import { FilmeComponent } from './filme/filme.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FilterPipeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
